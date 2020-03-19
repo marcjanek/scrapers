@@ -11,9 +11,9 @@ public class Scraper {
         final Scraper scraper = new Scraper();
 
         final RTVShop shop = scraper.RTV_EURO_AGD_scraper();
-
+        String time = LocalTime.now().toString();
         for (Product e : shop.getProducts()) {
-            scraper.writeToFile("config/RTV/out1" + LocalTime.now(), e.toString());
+            scraper.writeToFile("config/RTV/out1" + time, e.toString());
         }
     }
 
@@ -22,7 +22,7 @@ public class Scraper {
                 "// Google Tag Manager dataLayer\n\t\tUA.push({\"products\": [",
                 "]});\n\t\t// koniec Google Tag Manager dataLayer\n"
         );
-        shop.load(1);
+        shop.load(20);
         return shop;
     }
 
